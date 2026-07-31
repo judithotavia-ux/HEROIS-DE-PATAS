@@ -1,0 +1,9 @@
+Coloque aqui a foto real da Maria Estela com o nome exato:
+
+    maria-estela.jpg
+
+(pode ser .jpg ou .png — se usar .png, troque a extensão em
+js/data/characters.js, no campo HDP.MENTOR.photo)
+
+Enquanto o arquivo não existir, a tela de Créditos mostra
+automaticamente um ícone de pata 🐾 no lugar da foto — nada quebra.

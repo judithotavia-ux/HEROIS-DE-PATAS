@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐾 Heróis de Patas - Web Edition</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== MENU PRINCIPAL ===== -->
+<div id="main-menu" class="screen active">
+    <div class="menu-bg">
+        <div class="floating-paws">🐾</div>
+        <div class="floating-paws">🐾</div>
+        <div class="floating-paws">🐾</div>
+    </div>
+    <div class="menu-content">
+        <span class="logo-icon">🐾</span>
+        <h1 class="game-title">HERÓIS DE PATAS</h1>
+        <p class="game-subtitle">Aventura na Natureza · Edição Web</p>
+        <div class="menu-buttons">
+            <button id="btn-new-game" class="menu-btn primary">▶ NOVA AVENTURA</button>
+            <button id="btn-characters" class="menu-btn secondary">👥 PERSONAGENS</button>
+            <button id="btn-maps" class="menu-btn secondary">🗺️ MAPAS</button>
+            <button id="btn-inventory" class="menu-btn secondary">🎒 INVENTÁRIO</button>
+            <button id="btn-missions" class="menu-btn secondary">📜 MISSÕES &amp; RESGATES</button>
+            <button id="btn-credits" class="menu-btn secondary">💝 CRÉDITOS</button>
+        </div>
+        <button id="btn-reset" class="menu-btn danger-link">🗑️ Apagar progresso salvo</button>
+        <div class="version-info">v1.0 Web · Pixel Art · 8 Heróis Jogáveis</div>
+    </div>
+</div>
+
+<!-- ===== PERSONAGENS ===== -->
+<div id="characters-screen" class="screen">
+    <div class="menu-content wide">
+        <h2 class="screen-title">👥 Escolha seu Herói</h2>
+        <p class="screen-hint">🌟 <strong>8 heróis jogáveis</strong> — desbloqueie novos com moedas coletadas em combate</p>
+        <div class="characters-grid" id="characters-grid"></div>
+        <p class="char-bio" id="char-bio"></p>
+        <button class="menu-btn secondary" data-back>← VOLTAR</button>
+    </div>
+</div>
+
+<!-- ===== MAPAS ===== -->
+<div id="maps-screen" class="screen">
+    <div class="menu-content wide">
+        <h2 class="screen-title">🗺️ Mapas da Aventura</h2>
+        <p class="screen-hint">Complete as missões obrigatórias de uma fase para desbloquear a próxima</p>
+        <div class="maps-grid" id="maps-grid"></div>
+        <button class="menu-btn secondary" data-back>← VOLTAR</button>
+    </div>
+</div>
+
+<!-- ===== INVENTÁRIO ===== -->
+<div id="inventory-screen" class="screen">
+    <div class="menu-content wide">
+        <h2 class="screen-title">🎒 Inventário</h2>
+        <div class="inventory-stats">
+            <div class="stat-card"><span class="label">🪙 Moedas</span><span class="value" id="inv-coins">0</span></div>
+            <div class="stat-card"><span class="label">🦴 Ossos</span><span class="value" id="inv-bones">0</span></div>
+            <div class="stat-card"><span class="label">❤️ Corações</span><span class="value" id="inv-hearts">0</span></div>
+            <div class="stat-card"><span class="label">💎 Gemas</span><span class="value" id="inv-gems">0</span></div>
+        </div>
+        <div class="inventory-stats">
+            <div class="stat-card"><span class="label">⭐ Nível</span><span class="value" id="inv-level">1</span></div>
+            <div class="stat-card"><span class="label">🏅 Tier</span><span class="value small" id="inv-tier">Iniciante</span></div>
+            <div class="stat-card wide2"><span class="label">💛 Amizade</span><span class="value small" id="inv-friend">Conhecido</span></div>
+        </div>
+        <h3 class="sub-title">🐾 Animais Resgatados</h3>
+        <div id="rescue-gallery" class="inventory-grid"></div>
+        <button class="menu-btn secondary" data-back>← VOLTAR</button>
+    </div>
+</div>
+
+<!-- ===== MISSÕES ===== -->
+<div id="missions-screen" class="screen">
+    <div class="menu-content wide">
+        <h2 class="screen-title">📜 Missões</h2>
+        <div id="missions-list" class="missions-list"></div>
+        <button class="menu-btn secondary" data-back>← VOLTAR</button>
+    </div>
+</div>
+
+<!-- ===== CRÉDITOS ===== -->
+<div id="credits-screen" class="screen">
+    <div class="menu-content">
+        <h2 class="screen-title">💝 Créditos</h2>
+        <div class="credits-content">
+            <p><strong>🐾 HERÓIS DE PATAS</strong></p>
+            <p>Uma aventura dedicada a todos os animais</p><br>
+            <p><strong>🌟 HERÓIS JOGÁVEIS</strong></p>
+            <p>🐕 Fifi · 🐕 Pretinha · 🐈‍⬛ Safira · 🐩 Spike · 🐱 Peludinho<br>🐩 Amora · 🐱 Benjamin · 🐕 Sansão · 🐕 Totó · 🐱 Zarolho</p><br>
+            <div class="mentor-card">
+                <div class="mentor-photo-wrap">
+                    <img id="mentor-photo" class="mentor-photo hidden" alt="Foto de Maria Estela">
+                    <div id="mentor-photo-fallback" class="mentor-photo-fallback">🐾</div>
+                </div>
+                <div class="mentor-name" id="mentor-name"></div>
+                <div class="mentor-role" id="mentor-role"></div>
+                <p class="mentor-quote" id="mentor-quote"></p>
+            </div>
+            <p class="verse-text" id="verse-text"></p>
+            <p class="verse-ref" id="verse-ref"></p>
+            <br>
+            <p style="font-size:18px;color:#ffb300;font-style:italic;">"Nenhum animal merece sofrer.<br>Todo animal merece amor, proteção, respeito e um lar."</p>
+            <p class="dev-credit" id="dev-credit"></p>
+        </div>
+        <button class="menu-btn secondary" data-back>← VOLTAR</button>
+    </div>
+</div>
+
+<!-- ===== JOGO ===== -->
+<div id="game-container" class="hidden">
+    <canvas id="game-canvas"></canvas>
+
+    <div id="hud">
+        <div class="hud-left">
+            <div class="hud-item hp-item">
+                <span class="icon">❤️</span>
+                <span id="hud-hp" class="value">100</span>/<span id="hud-maxhp">100</span>
+                <div class="hp-track"><div id="hud-hp-bar" class="hp-fill"></div></div>
+            </div>
+            <div class="hud-item"><span class="icon">⭐</span><span id="hud-level" class="value">1</span></div>
+            <div class="hud-item"><span class="icon">🪙</span><span id="hud-coins" class="value">0</span></div>
+            <div class="hud-item"><span class="icon">🦴</span><span id="hud-bones" class="value">0</span></div>
+            <div class="hud-item"><span class="icon">💎</span><span id="hud-gems" class="value">0</span></div>
+        </div>
+        <div class="hud-right">
+            <div class="hud-item"><span class="icon">📍</span><span id="hud-location">Floresta</span></div>
+            <div id="special-indicator" class="hud-item special-item">
+                <span class="icon">✨</span><span id="special-name">Especial</span>
+                <span id="special-status" class="value">PRONTO (K)</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="quest-hud"></div>
+
+    <div id="controls-hint">⬅️➡️ Mover · ⬆️/Espaço Pular · Shift Correr · J Atacar · K Especial · E Resgatar · C Trocar Herói · I Inventário · M Missões · P Pausar</div>
+
+    <div id="pause-overlay" class="overlay">
+        <h2>⏸ PAUSADO</h2>
+        <button class="pause-btn primary" id="btn-resume">▶ CONTINUAR</button>
+        <button class="pause-btn" id="btn-save">💾 SALVAR</button>
+        <button class="pause-btn" id="btn-missions-pause">📜 MISSÕES</button>
+        <div class="pause-maps">
+            <div class="pause-maps-title">🗺️ Viajar para:</div>
+            <div id="pause-maps-grid" class="maps-grid small"></div>
+        </div>
+        <button class="pause-btn" id="btn-menu">🏠 MENU PRINCIPAL</button>
+    </div>
+
+    <div id="game-over" class="overlay">
+        <h2>💔 GAME OVER</h2>
+        <p class="sub">Você foi derrotado! Tente novamente.</p>
+        <button class="pause-btn primary" id="go-retry">↻ TENTAR NOVAMENTE</button>
+        <button class="pause-btn" id="go-menu">🏠 MENU</button>
+    </div>
+
+    <div id="stage-clear" class="overlay">
+        <h2 id="stage-clear-title">🏁 Fase concluída!</h2>
+        <p class="sub" id="stage-clear-summary"></p>
+        <button class="pause-btn primary" id="stage-clear-next">▶ CONTINUAR</button>
+    </div>
+
+    <div id="ending-overlay" class="overlay">
+        <h2 id="ending-title">🏡 O GRANDE LAR</h2>
+        <p class="sub" id="ending-subtitle"></p>
+        <div class="ending-stats" id="ending-stats"></div>
+        <div class="ending-scene">
+            <div class="wag-fifi">🐕</div>
+            <p class="ending-quote" id="ending-quote"></p>
+            <p class="ending-signature" id="ending-signature"></p>
+        </div>
+        <div class="ending-friends" id="ending-friends"></div>
+        <button class="pause-btn primary" id="ending-credits-btn">🎬 VER CRÉDITOS</button>
+        <button class="pause-btn" id="ending-menu-btn">🏠 MENU PRINCIPAL</button>
+    </div>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/data/characters.js"></script>
+<script src="js/data/items.js"></script>
+<script src="js/data/animals.js"></script>
+<script src="js/data/enemies.js"></script>
+<script src="js/data/missions.js"></script>
+<script src="js/data/maps.js"></script>
+<script src="js/engine/sprites.js"></script>
+<script src="js/engine/audio.js"></script>
+<script src="js/engine/input.js"></script>
+<script src="js/engine/particles.js"></script>
+<script src="js/state.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/world.js"></script>
+<script src="js/combat.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
