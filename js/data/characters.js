@@ -5,7 +5,7 @@ HDP.CHARACTERS = {
     Fifi: {
         id: 'Fifi', name: 'Fifi', species: 'dog', title: '🌟 LÍDER',
         kind: 'quadruped', earType: 'floppy', tailType: 'wag',
-        palette: { body: '#E8823C', spot: '#FFD9A0', belly: '#FFF3E0' },
+        palette: { body: '#8B5A2B', spot: '#6B4226', belly: '#EED2AE' },
         accessory: { type: 'dress', color: '#FF6FA5', trim: '#FFC1DC' },
         stats: { hp: 100, attack: 15, defense: 10, speed: 1.15 },
         unlockCost: 0, isDefault: true,
@@ -26,7 +26,7 @@ HDP.CHARACTERS = {
     Safira: {
         id: 'Safira', name: 'Safira', species: 'cat', title: '🎯 EQUILÍBRIO',
         kind: 'quadruped', earType: 'pointy', tailType: 'straight',
-        palette: { body: '#1B2430', spot: '#3A4A5E', belly: '#5B7A99' },
+        palette: { body: '#1A1A1A', spot: '#2E2E2E', belly: '#454545' },
         stats: { hp: 90, attack: 18, defense: 12, speed: 1.3 },
         unlockCost: 150, isDefault: false,
         special: { name: 'Equilíbrio Felino', desc: 'Fica invulnerável por 3s', cooldown: 12, duration: 3, effect: 'invuln' },
@@ -35,7 +35,7 @@ HDP.CHARACTERS = {
     Spike: {
         id: 'Spike', name: 'Spike', species: 'dog', title: '⚡ VELOCIDADE',
         kind: 'quadruped', earType: 'floppy', tailType: 'curly',
-        palette: { body: '#F5F5F0', spot: '#E0E0D8', belly: '#FFFFFF' },
+        palette: { body: '#FAFAFA', spot: '#E2E2E2', belly: '#FFFFFF' },
         stats: { hp: 70, attack: 22, defense: 6, speed: 1.8 },
         unlockCost: 120, isDefault: false,
         special: { name: 'Rajada Veloz', desc: 'Dobra a velocidade de ataque por 5s', cooldown: 9, duration: 5, effect: 'atkSpeed' },
@@ -44,7 +44,7 @@ HDP.CHARACTERS = {
     Peludinho: {
         id: 'Peludinho', name: 'Peludinho', species: 'cat', title: '🧩 ENIGMAS',
         kind: 'quadruped', earType: 'round', tailType: 'straight',
-        palette: { body: '#D4A574', spot: '#B8895C', belly: '#F0DBB8' },
+        palette: { body: '#9E9E9E', spot: '#707070', belly: '#FFFFFF' },
         stats: { hp: 85, attack: 16, defense: 14, speed: 1.1 },
         unlockCost: 80, isDefault: false,
         special: { name: 'Garra Enigmática', desc: 'Atordoa todos os inimigos próximos por 2s', cooldown: 11, duration: 2, effect: 'stun' },
@@ -53,7 +53,7 @@ HDP.CHARACTERS = {
     Amora: {
         id: 'Amora', name: 'Amora', species: 'dog', title: '💚 CURA',
         kind: 'quadruped', earType: 'floppy', tailType: 'curly',
-        palette: { body: '#E8A0BF', spot: '#F5C9DB', belly: '#FFF0F6' },
+        palette: { body: '#FDFDF8', spot: '#E9E9E0', belly: '#FFFFFF' },
         stats: { hp: 95, attack: 12, defense: 15, speed: 1.0 },
         unlockCost: 130, isDefault: false,
         special: { name: 'Toque Curativo', desc: 'Recupera 40% do HP máximo', cooldown: 14, duration: 0, effect: 'heal' },
@@ -72,7 +72,7 @@ HDP.CHARACTERS = {
     Sansao: {
         id: 'Sansao', name: 'Sansão', species: 'dog', title: '💪 FORÇA',
         kind: 'quadruped', earType: 'floppy', tailType: 'wag',
-        palette: { body: '#D4A017', spot: '#B8860B', belly: '#F5E6C8' },
+        palette: { body: '#6B4226', spot: '#4A2E18', belly: '#A8785A' },
         stats: { hp: 110, attack: 20, defense: 16, speed: 0.9 },
         unlockCost: 95, isDefault: false,
         special: { name: 'Investida Poderosa', desc: 'Investida que esmaga inimigos próximos', cooldown: 9, duration: 0.4, effect: 'dash' },
