@@ -12,7 +12,9 @@ HDP.Game = {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         HDP.Input.init();
+        HDP.TouchControls.init(canvas.parentElement);
         window.addEventListener('resize', () => this.resizeCanvas());
+        window.addEventListener('orientationchange', () => this.resizeCanvas());
     },
 
     resizeCanvas() {

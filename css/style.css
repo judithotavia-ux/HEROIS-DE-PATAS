@@ -200,6 +200,36 @@ body {
 
 #controls-hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); padding: 4px 14px; border-radius: 20px; font-size: 9px; color: rgba(255, 255, 255, 0.35); z-index: 10; pointer-events: none; white-space: nowrap; max-width: 96vw; overflow-x: auto; }
 
+/* ===== CONTROLES DE TOQUE (celular/tablet) ===== */
+.touch-controls { position: absolute; inset: 0; z-index: 20; pointer-events: none; touch-action: none; }
+.touch-btn, .touch-pause-btn {
+    pointer-events: auto; touch-action: none; user-select: none; -webkit-user-select: none;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(10, 10, 20, 0.55); backdrop-filter: blur(4px);
+    border: 2px solid rgba(255, 179, 0, 0.45); color: #ffb300;
+    border-radius: 50%; font-size: 22px; line-height: 1;
+}
+.touch-btn.pressed, .touch-pause-btn:active { background: rgba(255, 179, 0, 0.35); border-color: #ffb300; }
+.touch-move { position: absolute; left: 16px; bottom: 22px; display: flex; gap: 12px; }
+.touch-move .move-btn { width: 64px; height: 64px; font-size: 26px; }
+.touch-actions { position: absolute; right: 16px; bottom: 22px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.touch-actions .row-small { display: flex; gap: 8px; }
+.touch-actions .row-small .small-btn { width: 46px; height: 46px; font-size: 18px; }
+.touch-actions .row-big { display: flex; align-items: flex-end; gap: 12px; }
+.touch-actions .row-big .big-btn { width: 66px; height: 66px; font-size: 26px; }
+.touch-actions .row-big .jump-btn { width: 76px; height: 76px; font-size: 30px; }
+.touch-pause-btn { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; font-size: 17px; border-radius: 10px; }
+
+/* Some laptops have a touchscreen too — only show these on devices whose
+   primary pointer is coarse (finger) rather than a mouse, and hide the
+   keyboard hint so it doesn't confuse touch players. */
+@media (hover: hover) and (pointer: fine) {
+    .touch-controls { display: none; }
+}
+@media (hover: none), (pointer: coarse) {
+    #controls-hint { display: none; }
+}
+
 .overlay { position: absolute; inset: 0; display: none; justify-content: center; align-items: center; flex-direction: column; z-index: 50; padding: 16px; text-align: center; overflow-y: auto; }
 .overlay.active { display: flex; }
 #pause-overlay { background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(8px); gap: 10px; }
