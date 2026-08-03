@@ -46,7 +46,7 @@ HDP.UI = {
 
             const avatar = data.portrait
                 ? `<img class="char-avatar-img" src="${data.portrait}" alt="${data.name}">`
-                : `<span class="char-avatar">${HDP.UI.charEmoji(data)}</span>`;
+                : `<canvas class="char-avatar-canvas" width="64" height="64"></canvas>`;
 
             const card = document.createElement('div');
             card.className = `char-card${unlocked ? '' : ' locked'}${selected ? ' selected' : ''}`;
@@ -57,6 +57,10 @@ HDP.UI = {
                 <div class="char-stats">❤️${data.stats.hp} ⚔️${data.stats.attack} 🛡️${data.stats.defense}</div>
                 ${unlocked ? `<div class="char-extra">⭐ Nv.${level} · ${friend}</div>` : `<div class="char-lock">🔒 ${data.unlockCost} moedas</div>`}
             `;
+            if (!data.portrait) {
+                const avatarCanvas = card.querySelector('.char-avatar-canvas');
+                HDP.Sprites.draw(avatarCanvas.getContext('2d'), data, 0, 0, 64, 64, { facing: 1, t: 0 });
+            }
             card.addEventListener('click', () => {
                 if (!unlocked) {
                     if (HDP.Inventory.coins >= data.unlockCost) {

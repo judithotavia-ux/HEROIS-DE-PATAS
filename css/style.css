@@ -93,6 +93,11 @@ body {
     object-position: center 70%; display: block; margin: 0 auto;
     border: 2px solid rgba(255,255,255,0.12);
 }
+.char-avatar-canvas {
+    width: 64px; height: 64px; display: block; margin: 0 auto;
+    image-rendering: pixelated; image-rendering: crisp-edges;
+    background: rgba(255,255,255,0.08); border-radius: 12px;
+}
 .char-name { font-size: 13px; font-weight: 700; color: #fff; }
 .char-title { font-size: 8px; font-weight: 700; color: #ffb300; letter-spacing: 1px; margin: 2px 0; }
 .char-stats { font-size: 9px; color: rgba(255, 255, 255, 0.35); }
