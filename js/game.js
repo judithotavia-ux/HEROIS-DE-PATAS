@@ -450,9 +450,7 @@ HDP.Game = {
             ctx.strokeRect(player.x - 3, player.y - 3, player.width + 6, player.height + 6);
         }
         if (player.attacking) {
-            ctx.strokeStyle = '#ffb300'; ctx.lineWidth = 3;
-            const ax = player.direction > 0 ? player.x + player.width : player.x - 44;
-            ctx.beginPath(); ctx.arc(ax + 22, player.y + player.height / 2, 30, 0, Math.PI * 2); ctx.stroke();
+            this.drawAttackLightning(ctx, player);
         }
 
         // bandeira / portal
@@ -494,6 +492,60 @@ HDP.Game = {
             ctx.fillText(this.message, W / 2, 73);
             ctx.textAlign = 'left';
         }
+    },
+
+    // Raio eletrico do ataque (troca o antigo circulo de impacto)
+    drawAttackLightning(ctx, player) {
+        const dir = player.direction;
+        const range = HDP.CONST.ATTACK_RANGE;
+        const sx = dir > 0 ? player.x + player.width : player.x;
+        const sy = player.y + player.height / 2;
+
+        const segs = 5;
+        const pts = [[sx, sy]];
+        for (let i = 1; i <= segs; i++) {
+            const px = sx + dir * (range * i / segs);
+            const jag = (i === segs) ? 0 : (i % 2 === 0 ? 1 : -1) * (6 + Math.random() * 5);
+            pts.push([px, sy + jag]);
+        }
+
+        ctx.save();
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+
+        // brilho externo (glow)
+        ctx.shadowColor = '#ffd54f';
+        ctx.shadowBlur = 12;
+        ctx.strokeStyle = '#ffb300';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(pts[0][0], pts[0][1]);
+        for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+        ctx.stroke();
+
+        // nucleo brilhante
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = '#fff9c4';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(pts[0][0], pts[0][1]);
+        for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+        ctx.stroke();
+
+        // pequenas faiscas ramificadas
+        ctx.strokeStyle = 'rgba(255, 249, 196, 0.85)';
+        ctx.lineWidth = 1.5;
+        for (let i = 1; i < pts.length - 1; i += 2) {
+            const [bx, by] = pts[i];
+            const branchLen = 6 + Math.random() * 5;
+            const branchAngle = (Math.random() - 0.5) * Math.PI * 0.9;
+            ctx.beginPath();
+            ctx.moveTo(bx, by);
+            ctx.lineTo(bx + Math.cos(branchAngle) * branchLen * dir, by + Math.sin(branchAngle) * branchLen);
+            ctx.stroke();
+        }
+
+        ctx.restore();
     },
 
     drawTrain(ctx, train, groundY) {
