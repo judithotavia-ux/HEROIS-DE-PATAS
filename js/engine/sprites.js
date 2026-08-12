@@ -24,7 +24,10 @@ HDP.Sprites = (function () {
 
     function earBlocks(p, earType, body, spot) {
         switch (earType) {
-            case 'floppy': p(11, 1, 2, 4, body); break;
+            case 'floppy':
+                p(10.6, 1.2, 2.0, 3.2, body);
+                p(10.9, 3.6, 1.4, 2.0, spot || body);
+                break;
             case 'pointy': p(12, -1, 1, 2, body); p(11, 1, 3, 1, body); break;
             case 'round': p(12, 0, 2, 2, body); break;
             case 'long': p(12, -4, 2, 6, spot || body); p(13.5, -4, 1, 6, body); break;
@@ -50,9 +53,9 @@ HDP.Sprites = (function () {
         if (!accessory) return;
         const c = accessory.color;
         if (accessory.type === 'dress' && pass === 'body') {
-            p(3, 9, 8, 3, c);
-            p(1, 11, 12, 3, c);
-            p(2, 11, 10, 1, accessory.trim || c);
+            p(3.5, 9.2, 7, 2.2, c);
+            p(2.5, 11.0, 8.5, 2.0, c);
+            p(3, 12.7, 7, 0.6, accessory.trim || c);
         } else if (accessory.type === 'bandana' && pass === 'head') {
             p(9, 6, 4, 2, c);
             p(9, 8, 1, 2, c);
@@ -74,22 +77,30 @@ HDP.Sprites = (function () {
 
         tailBlocks(p, spec.tailType, body, spot, walk && Math.floor(t * 6) % 2 === 0);
 
-        // pernas (atrás do corpo)
+        // pernas (atrás do corpo), com pontinha de pata mais clara
         p(3, 12 + (legLift ? 0 : 1) * 0, 2, 3 - legLift, body);
         p(9, 12 + (1 - legLift ? 0 : 1) * 0, 2, 3 - (1 - legLift), body);
-        p(3, 14, 2, 1, spot);
-        p(9, 14, 2, 1, spot);
+        p(2.8, 14.2, 2.4, 0.9, spot);
+        p(8.8, 14.2, 2.4, 0.9, spot);
 
-        // corpo
-        p(2, 7, 10, 5, body);
-        p(3, 10, 8, 2, belly);
+        // corpo, com leve arredondamento nas bordas
+        p(3, 6.5, 8, 1, body);
+        p(2, 7.5, 10, 4.5, body);
+        p(3, 10, 8, 2.2, belly);
+        p(4, 12, 6, 0.6, belly);
 
         accessoryBlocks(p, spec.accessory, 'body');
 
-        // cabeça
-        p(11, 3, 5, 6, body);
+        // cabeça, arredondada, com focinho projetado pra frente
+        p(11.3, 2.6, 3.6, 1, body);
+        p(10.6, 3.2, 4.2, 5.6, body);
+        p(11.3, 8.4, 3.4, 0.8, body);
         earBlocks(p, spec.earType, body, spot);
-        p(14, 6, 2, 3, belly);
+
+        // focinho/focinheira
+        p(14.0, 5.6, 1.9, 2.3, body);
+        p(15.0, 6.0, 1.0, 1.4, belly);
+        p(15.7, 6.3, 0.9, 0.9, '#2a1a12');
 
         accessoryBlocks(p, spec.accessory, 'head');
 
@@ -98,9 +109,9 @@ HDP.Sprites = (function () {
             p(13.2, 4.2, 2, 2, '#1a1a1a');
             p(13.6, 4.6, 1, 1, '#ffffff');
         } else {
-            p(14, 5, 1, 1, '#1a1a1a');
+            p(13.0, 4.3, 1.6, 1.6, '#1a1a1a');
+            p(13.3, 4.5, 0.6, 0.6, '#ffffff');
         }
-        p(15, 7, 1, 1, '#1a1a1a');
     }
 
     function drawBiped(ctx, x, y, w, h, spec, opts) {
